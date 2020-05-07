@@ -86,6 +86,9 @@
                             Run: (body, output) => {
                                 $('#controls input').attr('disabled', true);
 
+                                body = body.replace(/::<([^>]+)>/g, '($1)')
+                                body = body.replace(/::(\w+)/g, '($1)')
+
                                 writeToGoFilesystem('/main.go2', body);
                                 output({
                                     Kind: 'start',
