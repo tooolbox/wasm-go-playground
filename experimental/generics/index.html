@@ -156,7 +156,7 @@
 // XXX: This is highly experimental. Don't expect correctness or stability.
 
 // Takes a slice of any type and reverses it.
-func Reverse (type T) (list []T) {
+func Reverse::<type T> (list []T) {
 	i := 0
 	j := len(list) - 1
 	for i < j {
@@ -172,9 +172,9 @@ contract Sequence(T) {
 }
 
 // Defines a tree where each node can hold a value that satisfies Sequence.
-type Tree (type T Sequence) struct {
-	Left *Tree(T)
-	Right *Tree(T)
+type Tree::<type T Sequence> struct {
+	Left *Tree::T
+	Right *Tree::T
 	Value T
 }
 
@@ -183,9 +183,9 @@ func main() {
 	Reverse(s)
 	println(s[0], s[1], s[2])
 	
-	tree := Tree(string){
+	tree := Tree::string{
 		Value: "foo",
-		Left: &Tree(string){
+		Left: &Tree::string{
 			Value: "bar",
 		},
 	}
