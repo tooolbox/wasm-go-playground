@@ -87,6 +87,7 @@
                                 $('#controls input').attr('disabled', true);
 
                                 body = body.replace(/::<([^>]+)>/g, '($1)')
+                                body = body.replace(/:<([^>]+)>/g, '($1)')
                                 body = body.replace(/::(\w+)/g, '($1)')
                                 body = body.replace(/::/g, '')
                                 body = body.replace(/(\w)!\(/g, '$1(')
