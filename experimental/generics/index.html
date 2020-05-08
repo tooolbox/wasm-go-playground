@@ -88,6 +88,11 @@
 
                                 body = body.replace(/::<([^>]+)>/g, '($1)')
                                 body = body.replace(/::(\w+)/g, '($1)')
+                                body = body.replace(/::/g, '')
+                                body = body.replace(/(\w)!\(/g, '$1(')
+                                body = body.replace(/(\w)@\(/g, '$1(')
+                                body = body.replace(/(\w)#\(/g, '$1(')
+                                body = body.replace(/(\w)\$\(/g, '$1(')
 
                                 writeToGoFilesystem('/main.go2', body);
                                 output({
@@ -153,7 +158,7 @@
 		<div id="wrap">
 			<textarea itemprop="description" id="code" name="code" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false">package main
 
-// XXX: This is highly experimental. Don't expect correctness or stability.
+// Alternate syntax, see 
 
 // Takes a slice of any type and reverses it.
 func Reverse::<type T> (list []T) {
